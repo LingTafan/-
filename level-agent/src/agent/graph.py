@@ -17,20 +17,20 @@ def _route_after_validate(
     state: LevelAgentState,
 ) -> Literal["generate", "human_review", "__end__"]:
     errors = state.get("validation_errors") or []
-    if not errors:
-        return "human_review"
-
     retry = int(state.get("retry_count") or 0)
     max_retries = int(state.get("max_retries") or 3)
-    if retry < max_retries:
+
+    if not errors:
+        return "human_review"
+    elif retry < max_retries:
         print(
             f"[graph] 校验失败，回修 generate "
             f"(retry {retry + 1}/{max_retries})"
         )
         return "generate"
-
-    print(f"[graph] 已达 max_retries={max_retries}，停止")
-    return "__end__"
+    else:
+        print(f"[graph] 已达 max_retries={max_retries}，停止")
+        return "__end__"
 
 
 def _bump_retry(state: LevelAgentState) -> dict[str, Any]:
