@@ -1,0 +1,29 @@
+{
+  "level_id": "port_rain_01",
+  "theme": "雨夜港口",
+  "waves": [
+    {
+      "wave": 1,
+      "budget": 40,
+      "enemies": [
+        { "id": "crab", "count": 8, "tags": ["ground"] }
+      ]
+    },
+    {
+      "wave": 2,
+      "budget": 55,
+      "enemies": [
+        { "id": "crab", "count": 6, "tags": ["ground"] },
+        { "id": "drone", "count": 2, "tags": ["fly"] }
+      ]
+    },
+    {
+      "wave": 3,
+      "budget": 80,
+      "enemies": [
+        { "id": "slime", "count": 4, "tags": ["ground"] },
+        { "id": "elite_brute", "count": 1, "tags": ["elite", "ground"] }
+      ]
+    }
+  ]
+}
